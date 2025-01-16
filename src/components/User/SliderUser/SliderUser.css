@@ -1,0 +1,16 @@
+.btn-pn {
+    width: 66px;
+    height: 60px;
+    border-radius: 60%;
+    background-color: #0003;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.8s;
+}
+
+.slide:hover .btn-pn{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}

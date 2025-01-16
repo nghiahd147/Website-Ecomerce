@@ -1,0 +1,16 @@
+.large-banner {
+    height: 433px;
+    background-image: url('https://fusta-demo.myshopify.com/cdn/shop/files/01.jpg?v=1613745592');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 100px 0 0 0;
+}
+
+.larger-group {
+    width: 80%;
+    height: 230px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}

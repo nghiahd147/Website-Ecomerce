@@ -1,0 +1,18 @@
+.shop__heading::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    background-color: #e97730;
+    width: 20%;
+    height: 3px;
+}
+
+.shop__icon {
+    color: #e9e4e0;
+}
+
+.shop__icon:hover {
+    color: #e97730;
+    transition: all .4s;
+}

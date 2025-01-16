@@ -1,0 +1,66 @@
+1. Lưu giá trị vào 1 array
+
+Khi muốn lưu biến cũ giá trị dưới dạng 1 array khi sử dụng state ta viết dưới dạng hàm ẩn danh
+setState((bien_luu_tru) => [...bien_luu_tru, gia_tri_truyen_vao])
+Lúc này bien_luu_tru sẽ lưu giá trị mới được truyền vào của gia_tri_truyen_vao
+
+2. Lấy địa chỉ Router
+
+Ta sẽ dùng useLocation:
+const local = useLocation()
+const isShop = local.pathname === '/shop'
+Lúc này thì isShop sẽ có giá trị router và ta có thể sử dụng nó để xử lý logic
+
+3. Lọc 1 danh sách array dùng vs filter
+
+array.filter(items => items !== items_trong_gio_hang)
+
+Có nghĩa là nó sẽ lấy các items khác với items_trong_gio_hang (hay ns cách khác nó lọc các items khác với items_trong_gio_hang)
+Còn nếu để === thì nó sẽ chỉ lấy items_trong_gio_hang còn khác items khác sẽ bị xóa đi (hay ns cách nó lọc lấy 1 items_trong_gio_hang)
+
+4. Logic viết lọc danh mục sản phẩm theo option (file Shop.jsx và file Product List)
+
+5. Trong 1 mảng chỉ có string ['name1', 'name2', 'name3'] nếu muốn kiểm tra với các giá trị khác ta sẽ dùng includes
+ví dụ ta có 1 danh sách Product: product.filter(products => stringAr.includes(product.name))
+-> Lúc này ta đã lọc được ra các thằng giống với trong mảng string
++ includes giúp kiếm tra phần tử đó có tồn tại trong mảng hay không
+
+6.
+  // matchPath so sánh 2 đường dẫn trả về một kết quả khớp nếu hai đường dẫn khớp, hoặc null nếu không khớp.
+  const isDetail = matchPath('/detail/:id', location.pathname)
+
+7. Cách thêm giá trị vào trong 1 object, đó là sử dụng destructuring
+  const myObject = { bla: hihi }
+  const updateObject = {...myObject, kohihi: haha}
+
+8. Chúng ta có thể dùng giá trị trong phương thức map ngoài hàm và không thể xử lý trong useEffect khi lấy giá trị return
+(Ví dụ về việc tính tống trong Cart.jsx)
+
+9. Logic search
+Dùng fillter lọc qua cái array lấy được array.fillter((items => items.name.includes(nameSearch)))
+-> Sẽ lấy ra được 1 mảng chứa từ khóa đó
+
+10. Sử dụng radio
+
+- Cách để có thể khi nhấn vào chữ mà ô radio sẽ check không cần phải trực tiếp ấn vào ô mới check: lồng thẻ label vào trong 
+thẻ input và span
+
+- Cách để chỉ 1 trong 2 check là đặt name ô input radio đó giống nhau
+
+<div className="flex-col ml-3 ">
+    <label className="flex items-center my-2 cursor-pointer text-lg">
+        <input type="radio" name="payment" className="cursor-pointer"/>
+        <span className="ml-2 hover:text-orange-600 transition-all duration-300">Thanh toán khi nhận hàng</span>
+    </label>
+    <label className="flex items-center my-2 cursor-pointer text-lg">
+        <input type="radio" name="payment" className="cursor-pointer"/>
+        <span className="ml-2 hover:text-orange-600 transition-all duration-300">Thanh toán qua ngân hàng</span>
+    </label>
+</div>
+
+
+11. Cách xóa tất cả sản phẩm 
+
+await Promise.all(product.map(item => deleteCart(item.id)));
+
+- Ta sẽ sử dụng Promise.all nó sẽ lần lượt xóa đi từng cái một thay vì chỉ xóa 1 id duy nhất

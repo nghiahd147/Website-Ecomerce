@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+table tbody tr td {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    height: 60px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bg-account {
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/531/951/621/digital-digital-art-artwork-illustration-minimalism-hd-wallpaper-preview.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.w-login {
+    width: 920px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.w-690 {
+    width: 690px;
 }
 
-.App-link {
-  color: #61dafb;
+.color-login {
+    color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bg-input {
+    background-color: #f2f2f2;
+}
+
+.bg-slider {
+    height: 600px;
+}
+
+.w-1200 {
+    width: 1200px;
+}
+
+.w-440 {
+    width: 440px;
+}
+
+.h-600 {
+    height: 600px;
+}
+
+.h-500 {
+    height: 450px;
+}
+
+/* Product Trang Chủ */
+
+.items-product {
+    width: 270px;
+}
+
+.items-product__img {
+    height: 360px;
+}
+
+.items-product__img::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(86, 86, 86, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s;
+}
+
+.items-product__img:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+.items-product__order {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(50%);
+    transition: all .5s;
+}
+
+.items-product__img:hover  .items-product__order{
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
 }

@@ -1,0 +1,19 @@
+.logout-link {
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s;
+}
+
+.user:hover .logout-link {
+    visibility: visible;
+    opacity: 1;
+}
+
+.user::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    width: 120px;
+    height: 10px;
+    background-color: transparent;
+}

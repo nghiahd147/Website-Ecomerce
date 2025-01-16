@@ -1,0 +1,15 @@
+.featured-product {
+    width: 100%;
+    display: flex;
+    padding: 100px 0 0 0;
+}
+
+.featured-product__group {
+    width: 1100px;
+    margin: auto;
+}
+
+.featured-product__group-text {
+    width: 350px;
+    border:1px solid rgb(202, 202, 202)
+}
