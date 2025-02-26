@@ -10,6 +10,7 @@ import { CategoryServices } from "../../../Services/CategoryServices";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosLogOut } from "react-icons/io";
 import { getCookie } from "../../../helpers/cookie";
+import { FaCircleChevronDown } from "react-icons/fa6";
 import { resetCategory } from "../../../actions/category";
 
 export const HeaderUser = () => {
@@ -19,7 +20,7 @@ export const HeaderUser = () => {
   const cookieName = getCookie("name");
   const dispatch = useDispatch();
 
-  const token = getCookie('token')
+  const token = getCookie("token");
 
   const handleActionReset = () => {
     dispatch(resetCategory());
@@ -31,9 +32,10 @@ export const HeaderUser = () => {
 
   const [stateModal, setStateModal] = useState(false);
   const [stateList, setStateList] = useState(false);
+  const [cateList, setCateList] = useState(false)
   const [getCategory, setCategory] = useState([]);
   const isLogin = useSelector((state) => state.LoginReducer);
-  const numCart = useSelector(state => state.CartReducer)
+  const numCart = useSelector((state) => state.CartReducer);
 
   // console.log(isLogin);
 
@@ -54,7 +56,7 @@ export const HeaderUser = () => {
     setSearch(e.target.value);
   };
 
-  console.log(search)
+  console.log(search);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -69,19 +71,19 @@ export const HeaderUser = () => {
       <div
         className={
           stateModal
-            ? "modal active z-20 flex items-center"
-            : "modal z-20 flex items-center"
+            ? "modal active z-20 flex items-center w-full"
+            : "modal z-20 flex items-center w-full"
         }
       >
         <div className="modal-group mx-auto flex items-center border-b-2 border-white">
           <input
             className="modal-input pb-4 text-lg bg-transparent text-white  outline-none"
             type="text"
-            placeholder="Search Our Store..."
-            onChange={handleSearch} 
+            placeholder="Search..."
+            onChange={handleSearch}
             value={search}
           />
-          <Link onClick={closeModal} to={'/search/' + search}>
+          <Link onClick={closeModal} to={"/search/" + search}>
             <IoSearch
               color="white"
               size={20}
@@ -105,7 +107,7 @@ export const HeaderUser = () => {
           />
         </Link>
         {/* Items */}
-        <div className="h-full tablet:hidden">
+        <div className="h-full hidden lg:block">
           <ul className="flex items-center justify-center h-full">
             <li className="mx-4 border-b-2 list-header border-transparent relative h-full flex items-center">
               <Link
@@ -159,6 +161,73 @@ export const HeaderUser = () => {
             </li>
           </ul>
         </div>
+        {/* Mobile Items */}
+        {stateList && (
+          <div className="flex flex-col absolute top-0 w-52 bottom-0 right-0 bg-white z-50 lg:hidden">
+            <AiOutlineCloseCircle
+              className="block lg:hidden cursor-pointer ml-auto mt-2 mr-2"
+              size={24}
+              onClick={handleList}
+            />
+            <ul className="flex flex-col gap-y-3">
+              <li className="p-2">
+                <Link
+                  to={"/"}
+                  className="hover:text-orange-300 duration-300 text-sm font-bold"
+                >
+                  HOME
+                </Link>
+              </li>
+              <li className="p-2">
+                <Link
+                  to={"/shop"}
+                  className="hover:text-orange-300 duration-300 text-sm font-bold"
+                >
+                  SHOP
+                </Link>
+              </li>
+              <li className="p-2">
+                <Link
+                  to={"/category"}
+                  className="hover:text-orange-300 duration-300 text-sm font-bold flex items-center"
+                  onClick={() => setCateList(!cateList)}
+                >
+                  CATEGORY
+                  <FaCircleChevronDown className="ml-2" />
+                </Link>
+                {cateList && <div className="w-40 z-50 lg:hidden transition-all duration-300">
+                  <ul className="bg-white py-2 px-4">
+                    {getCategory.map((items, index) => (
+                      <li
+                        key={index}
+                        className="cursor-pointer py-1 hover:text-orange-400 duration-300"
+                      >
+                        <Link to={"/shop/" + items.title}>{items.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>}
+              </li>
+              <li className="p-2">
+                <Link
+                  to={"/about"}
+                  className="hover:text-orange-300 duration-300 text-sm font-bold"
+                >
+                  ABOUT
+                </Link>
+              </li>
+              <li className="p-2">
+                <Link
+                  to={"/contact"}
+                  className="hover:text-orange-300 duration-300 text-sm font-bold"
+                >
+                  CONTACT
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
+
         {/* Search / Log */}
         <div className="flex items-center h-full">
           <IoSearch
@@ -174,7 +243,10 @@ export const HeaderUser = () => {
                 <div className="list-items absolute w-44 top-32 left-0 z-20 overflow-hidden text-center bg-white">
                   <ul>
                     <li>
-                      <Link to={'/info/' + token} className="px-2 py-2 block hover:text-orange-500 transition-all">
+                      <Link
+                        to={"/info/" + token}
+                        className="px-2 py-2 block hover:text-orange-500 transition-all"
+                      >
                         Thông tin đơn hàng
                       </Link>
                     </li>
@@ -205,20 +277,11 @@ export const HeaderUser = () => {
               </Link>
             </>
           )}
-
-          {stateList ? (
-            <AiOutlineCloseCircle
-              className="hidden tablet:block ml-6"
-              size={24}
-              onClick={handleList}
-            />
-          ) : (
-            <FaList
-              className="hidden tablet:block ml-6"
-              size={24}
-              onClick={handleList}
-            />
-          )}
+          <FaList
+            className="block lg:hidden ml-6 cursor-pointer"
+            size={24}
+            onClick={handleList}
+          />
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+// import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { FaStar } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { useNavigate, useParams } from "react-router-dom";
@@ -45,7 +45,7 @@ const Detail = () => {
   return (
     <div className="w-full flex">
       <div className="w-1200 mt-12 mx-auto flex h-500">
-        <div className="flex flex-col mr-10">
+        {/* <div className="flex flex-col mr-10">
           <IoIosArrowUp size={23} className="cursor-pointer ml-9" />
           <div className="w-24 flex flex-col items-center h-600 overflow-hidden">
             <div className="h-32 w-full mt-3">
@@ -80,7 +80,7 @@ const Detail = () => {
             </div>
           </div>
           <IoIosArrowDown size={23} className="cursor-pointer ml-9" />
-        </div>
+        </div> */}
         <form onSubmit={handleSubmit} key={id} className="flex">
           <img
             className="w-400 h-full"

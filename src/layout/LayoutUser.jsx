@@ -23,7 +23,7 @@ const LayoutUser = () => {
   const isInfo = matchPath("/info/:id", location.pathname);
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <HeaderUser />
       {isShop || isDetail || isAbout || isContact || isCart || isDetailShop || isPay || isSearch || isInfo ? (
         <Breadcrumb

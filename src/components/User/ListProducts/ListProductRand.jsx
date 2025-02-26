@@ -20,14 +20,13 @@ const ListProductRand = () => {
     }, [])
     
     return (
-        
         <>
             {getProducts.map((items, index) => {
                 const totalSale = items.price - (items.discountPercentage / 100)
                     return (
-                        <div key={index} className='low-pc:items-product bg-gray-300 flex flex-col'>
+                        <div key={index} className='w-full bg-gray-300 flex flex-col flex-wrap'>
                             <div className='items-product__img relative'>
-                                <img className="w-full h-full" src={items.images} alt="" />
+                                <img className="w-full h-[270px]" src={items.images} alt="" />
                                 {/* Sale */}
                                 <div className='items-product__sale absolute top-0 z-10'>
                                     <span className='block w-16 bg-white text-center mx-3 my-2'>Sale</span>
@@ -35,8 +34,8 @@ const ListProductRand = () => {
                                 </div>
                                 {/* Order */}
                                 <div className='items-product__order flex justify-center items-center absolute bottom-36 z-10 left-12'>
-                                    <FaHeart className='w-12 h-12 bg-white p-4 mx-1 cursor-pointer hover:bg-orange-400 duration-300' />
-                                    <IoBagHandle className='w-12 h-12 bg-white p-4 mx-1 cursor-pointer hover:bg-orange-400 duration-300' />
+                                    <FaHeart className='w-12 h-12 bg-white p-4 mx-1 cursor-not-allowed hover:bg-orange-400 duration-300' />
+                                    <IoBagHandle className='w-12 h-12 bg-white p-4 mx-1 cursor-not-allowed hover:bg-orange-400 duration-300' />
                                     <Link to={`/detail/${items.id}`} ><FaSearchPlus className='w-12 h-12 bg-white p-4 mx-1 cursor-pointer hover:bg-orange-400 duration-300' /></Link>
                                 </div>
                             </div>
@@ -53,5 +52,4 @@ const ListProductRand = () => {
         </>
     )
 }
-
 export default ListProductRand

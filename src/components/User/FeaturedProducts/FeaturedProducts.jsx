@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import "./FeaturedProducts.css"
 import { ProductServices } from '../../../Services/ProductServices'
 
 const FeaturedProducts = () => {
@@ -24,18 +23,12 @@ const FeaturedProducts = () => {
     const priceSale = featured.price - (featured.price * featured.discountPercentage / 100)
 
     return (
-        <div className='featured-product'>
-            <div className="featured-product__group flex items-center tablet:flex-col">
-                <div className='w-1/2 flex relative tablet:w-full tablet:justify-center'>
+        <div className='w-full flex pt-[100px]'>
+            <div className="w-[1200px] m-auto flex items-center">
+                <div className='w-1/2 flex relative lg:justify-center'>
                     <img className='w-3/4' src={featured.images} alt="" />
-                    <div className='absolute rounded-3xl text-2xl bg-white text-center p-2 shadow-lg -rotate-90 
-                    right-96 top-52 border-gray-400 featured-product__group-text
-                    tablet:left-1
-                    '>
-                        <span className='text-black'>{featured.title}</span>
-                    </div>
                 </div>
-                <div className='w-1/2 tablet:w-full px-16'>
+                <div className='w-1/2'>
                     <h2 className='text-3xl text-black my-5 font-bold'>Top Selling!</h2>
                     <div className='flex items-center my-5'>
                         <span className='mx-1 mt-1 text-lg line-through'>{featured.price}$</span>

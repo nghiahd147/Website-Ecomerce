@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <div className='footer flex w-full h-96 mt-auto'>
+    <div className='footer flex w-full mt-auto'>
       <div className='footer-items m-auto'>
         <div className='footer-group grid grid-cols-5 gap-4 pt-5 pb-20'>
           <div className='col-span-2 tablet:col-span-12 tablet:ml-10'>
             <h2 className='text-xl mb-5'>My Account</h2>
-            <span className='mb-3 flex items-center text-lg'>
+            <span className=' flex items-center text-lg'>
               <IoLocationOutline className='mr-2' size={18} />
               184 Main Rd E, St Albans VIC 3021, Australia
             </span>
